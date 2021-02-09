@@ -1,3 +1,6 @@
+#https://leetcode.com/problems/implement-strstr/
+#99.95% / 20.48%
+
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         if len(haystack) < len(needle): return -1
@@ -18,15 +21,13 @@ class Solution:
     def checkNeedle(self, haystack, needle, idx):
         counter = 0
         lenNeedle = len(needle)
-        ans = -1
+        ans = idx
         
         for i in range(len(haystack)):
             h_i = haystack[i]
             n_i = needle[counter]
             
             if h_i == n_i:
-                if counter == 0:
-                    ans = i+idx
                 counter += 1
                 if counter == lenNeedle:
                     return ans
@@ -34,4 +35,3 @@ class Solution:
                 return -1
                 
         return ans
-            
