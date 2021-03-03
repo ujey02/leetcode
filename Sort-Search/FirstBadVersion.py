@@ -1,4 +1,9 @@
-#53 / 46
+#53 / 98.75
+
+# The isBadVersion API is already defined for you.
+# @param version, an integer
+# @return an integer
+# def isBadVersion(version):
 
 class Solution:
     def firstBadVersion(self, n):
@@ -13,9 +18,9 @@ class Solution:
             cur = (search[1] + search[0])//2
             isBad = isBadVersion(cur)
             if isBad:
-                search = [search[0], cur]
+                search[1] = cur
             else:
-                search = [cur + 1, search[1]]
+                search[0] = cur + 1
             
         
         return search[0]
