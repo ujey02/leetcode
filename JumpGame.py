@@ -7,12 +7,12 @@ class Solution:
         destStep = len(nums)-1
         idx = 1
         
-        while idx < destStep:
+        while idx <= destStep:
             if idx <= maxStep:
                 if idx + nums[idx] > maxStep:
                     maxStep = idx+nums[idx]
                 idx += 1
             else:
                 return False
-        if maxStep >= destStep:
-            return True
+            
+        return True
