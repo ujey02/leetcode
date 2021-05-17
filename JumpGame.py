@@ -1,3 +1,4 @@
+#92.08 / 95.47
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         if len(nums) == 1:
