@@ -13,7 +13,6 @@ class Solution:
         order = []
         
         def courseToTake(idx):
-            #print("course to take: ", idx)
             if self.prereq[idx] == 0: #already taken
                 return []
             elif self.prereq[idx] == -1: #currently on a loop...
