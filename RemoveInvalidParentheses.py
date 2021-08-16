@@ -56,8 +56,6 @@ class Solution:
             self.check = {}
             self.removeOpen("", s[exceed_open[-1]:], len(exceed_open), 0)
             ans = []
-            # print(self.closeRemoved)
-            # print(s[exceed_open[-1]:], self.openRemoved)
             for front in self.closeRemoved:
                 for back in self.openRemoved:
                     ans.append(front+back)
