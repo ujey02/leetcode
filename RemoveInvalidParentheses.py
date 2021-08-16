@@ -1,4 +1,4 @@
-#92.66 / 34.79
+#97.49 / 34.79
 class Solution:
     def removeInvalidParentheses(self, s: str) -> List[str]:
         if s == "":
@@ -10,31 +10,8 @@ class Solution:
         while s != "" and s[-1] is "(":
             s = s[:-1]
             
-        #find and count wrongly placed close/open brackets
-        exceed_close = []
-        exceed_open = []
-        fw_count = 0
-        bw_count = 0
-        for i in range(len(s)):
-            fw = s[i]
-            bw = s[-1 * i - 1]
-            
-            if fw == "(":
-                fw_count += 1
-            elif fw == ")":
-                fw_count -= 1
-            
-            if bw == "(":
-                bw_count += 1
-            elif bw == ")":
-                bw_count -= 1
-            
-            if fw_count < 0:
-                exceed_close.append(i)
-                fw_count = 0
-            if bw_count > 0:
-                exceed_open.append(-1 * i - 1)
-                bw_count = 0
+        exceed_close = self.findInvalid(s, 1)
+        exceed_open = self.findInvalid(s, -1)
         
         self.check = {}
         self.closeRemoved, self.openRemoved = [], []
@@ -60,7 +37,22 @@ class Solution:
                 for back in self.openRemoved:
                     ans.append(front+back)
             return ans
-                
+    
+    def findInvalid(self, s, flag = 1):
+        exceed = []
+        count = 0
+        n = len(s)
+        for i in range(flag * min(flag*n, 0) + min(flag, 0), max(flag*n, 0) + min(flag, 0), flag):
+            c = s[i]
+            if c == "(":
+                count += 1
+            elif c == ")":
+                count -= 1
+            
+            if flag * count < 0:
+                exceed.append(i)
+                count = 0
+        return exceed
         
     def removeClose(self, prev_s, s, n, count):
         '''
@@ -124,5 +116,3 @@ class Solution:
                         self.removeOpen(s[i:]+prev_s, s[:i], n, count)
                 elif c == ")":
                     count -= 1
-                
-                
