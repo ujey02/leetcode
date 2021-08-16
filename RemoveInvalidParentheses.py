@@ -36,7 +36,6 @@ class Solution:
                 exceed_open.append(-1 * i - 1)
                 bw_count = 0
         
-        print(exceed_close, exceed_open)
         self.check = {}
         self.closeRemoved, self.openRemoved = [], []
         if not exceed_close and not exceed_open: # all are placed right
